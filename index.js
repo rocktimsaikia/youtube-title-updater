@@ -40,7 +40,11 @@ const updateDescription = async () => {
     part: 'snippet',
     requestBody: {
       id: VIDEO_ID,
-      snippet: { ...snippet, description: updatedDesc },
+      snippet: {
+        ...snippet,
+        title: updatedTitle,
+        description: updatedDesc,
+      },
     },
   });
 
