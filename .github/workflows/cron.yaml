@@ -1,21 +1,23 @@
-name: 'Youtube cron job'
-description: 'Update Title and Description of a youtube video'
-author: 'Rocktim Saikia <rocktimthedev@gmail.com>'
+name: Update youtube video Title on a schedule
 
 on:
   push:
-    branches:
-      - main
   schedule:
-    - cron: '*/1 * * * *'
+    - cron: '/5 * * * *'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  cron:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-        name: Execute script
-        runs:
-          using: 'node16'
-          main: 'index.js'
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - run: npm install
+      - name: Run script
+        run: npm start
+        env:
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+          REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}

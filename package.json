@@ -8,8 +8,10 @@
     "name": "Rocktim Saikia",
     "url": "https://rocktimcodes.site/"
   },
+  "scripts": {
+    "start": "node index"
+  },
   "dependencies": {
-    "@google-cloud/local-auth": "^1.0.1",
     "googleapis": "^92.0.0"
   },
   "devDependencies": {
