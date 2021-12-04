@@ -1,0 +1,18 @@
+name: 'Youtube cron job'
+description: 'Update Title and Description of a youtube video'
+author: 'Rocktim Saikia <rocktimthedev@gmail.com>'
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+        name: Execute script
+        runs:
+          using: 'node16'
+          main: 'index.js'
