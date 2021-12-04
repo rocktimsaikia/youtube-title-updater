@@ -3,6 +3,9 @@ description: 'Update Title and Description of a youtube video'
 author: 'Rocktim Saikia <rocktimthedev@gmail.com>'
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: '*/1 * * * *'
 jobs:
