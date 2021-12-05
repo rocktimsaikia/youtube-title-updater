@@ -2,19 +2,19 @@ require('dotenv').config();
 const { google } = require('googleapis');
 const VIDEO_ID = 'I4wRB7NujEY';
 
-const updateDescription = async () => {
+(async () => {
   // Init auth
   const authClient = new google.auth.OAuth2({
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
   });
   authClient.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
-
-  // Get video details
   const youtube = google.youtube({
     auth: authClient,
     version: 'v3',
   });
+
+  // Get video details
   const response = await youtube.videos.list({
     id: VIDEO_ID,
     part: 'statistics,snippet',
@@ -47,8 +47,5 @@ const updateDescription = async () => {
       },
     },
   });
-
   console.log(updatedResponse.status);
-};
-
-updateDescription();
+})();
